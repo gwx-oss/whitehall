@@ -8,7 +8,7 @@ namespace :test do
     ENV["CUCUMBER_FORMAT"] = "progress"
     ENV["RAILS_ENV"] = "test"
 
-    test_tasks = ["test_queue", "shared_mustache:compile", "parallel:features", "test:javascript"]
+    test_tasks = ["test", "shared_mustache:compile", "parallel:features", "test:javascript"]
     cleanup_tasks = ["test:cleanup"]
 
     ParallelTests::Tasks.run_in_parallel(

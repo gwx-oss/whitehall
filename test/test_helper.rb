@@ -3,6 +3,9 @@ ENV["RAILS_ENV"] = "test"
 
 require File.expand_path("../config/environment", __dir__)
 
+require "simplecov"
+SimpleCov.start "rails"
+
 require "maxitest/autorun"
 require "rails/test_help"
 require "mocha/minitest"
@@ -55,6 +58,7 @@ class ActiveSupport::TestCase
     Edition::AuditTrail.whodunnit = nil
     Timecop.return
     Sidekiq::Worker.clear_all
+    SimpleCov.at_exit_behavior
   end
 
   def with_stubbed_rummager(stubbed_object)
